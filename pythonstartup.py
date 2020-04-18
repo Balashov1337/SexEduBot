@@ -247,6 +247,7 @@ def pointcounter(message):
 
 
 def nullfile(message):
+    NameId(message)
     path="users/"
     name_file = str(message.from_user.id);
     name=path+name_file+'.txt'
@@ -257,6 +258,28 @@ def nullfile(message):
     data = '{0}\n{1}\n{2}'.format(lvluser,point,arr)
     file.write(data)
     file.close()
+
+def NameId(message):
+    try:
+        user_name = str(message.from_user.username)
+    except:
+        pass
+    user_id = str(message.from_user.id)
+    Check = False
+    f = open('NameId.txt', 'r')
+    data = list(f)
+    for i in range(len(data)//2):
+        if int(data[i*2]) == int(user_id):
+            Check = True
+            break
+        else:
+            Check = False
+    if Check == False:
+        f1 = open('NameId.txt', 'a')
+        f1.write(user_id + '\n')
+        f1.write(user_name + '\n')
+        f1.close()
+    f.close()
 
 
 #RUN
