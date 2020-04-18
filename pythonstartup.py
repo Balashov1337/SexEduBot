@@ -114,7 +114,11 @@ def Handler(message):
             pointcounter(message)
         name_file = str(message.from_user.id)
         path = 'users/'+name_file+'.txt'
-        file = open(path, 'r')
+        try:
+            file = open(path, 'r')
+        except:
+            nullfile(message)
+            file = open(path, 'r')
         user = list(file)
         file.close()
         lvluser = user[0]
@@ -182,7 +186,11 @@ def movelvl(message):
     #bot.send_message(message.chat.id, 'Задания на этом уровне закончились, но это ещё не всё ;)', reply_markup=markup)
     name_file = str(message.from_user.id)
     path = 'users/'+name_file+'.txt'
-    file = open(path, 'r')
+    try:
+        file = open(path, 'r')
+    except:
+        nullfile(message)
+        file = open(path, 'r')
     user = list(file)
     lvluser = user[0]
     point = user[1]
@@ -217,7 +225,11 @@ def movelvl(message):
 def pointcounter(message):
     name_file = str(message.from_user.id)
     path = 'users/'+name_file+'.txt'
-    file = open(path, 'r')
+    try:
+        file = open(path, 'r')
+    except:
+        nullfile(message)
+        file = open(path, 'r')
     user = list(file)
     file.close()
     lvluser = int(user[0])
